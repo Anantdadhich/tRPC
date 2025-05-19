@@ -12,17 +12,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
 
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
-
-    @@index([name])
-}
 
 // Necessary for Next auth
 model Account {
@@ -60,7 +50,8 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
+    suggestion Suggestion[]
+    favorites     Favorite[] 
 }
 
 model VerificationToken {
@@ -70,3 +61,29 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+
+model Suggestion {
+    id String @id @default(cuid()) 
+    title String 
+    description String 
+    tags String
+    createdAt DateTime @default(now()) 
+    createdById String?
+    createdBy User? @relation(fields: [createdById],references: [id]) 
+    favorites Favorite[]
+
+}
+
+
+model Favorite{
+    id String @id @default(cuid()) 
+    userId String 
+    suggestionId String 
+    status String @default("done")
+    createdAt DateTime @default(now())
+    user User @relation(fields: [userId],references: [id])
+    suggestion Suggestion @relation(fields:[suggestionId],references:[id])
+
+    @@unique([userId,suggestionId])
+}   
