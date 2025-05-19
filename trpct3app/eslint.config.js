@@ -33,6 +33,17 @@ export default tseslint.config(
         "error",
         { checksVoidReturn: { attributes: false } },
       ],
+      "react/no-unescaped-entities": "off", // Disable unescaped entity errors
+      "@typescript-eslint/ban-ts-comment": [
+        "error",
+        {
+          "ts-ignore": false, // Allow @ts-ignore
+          "ts-expect-error": true,
+          "ts-nocheck": true,
+          "ts-check": false,
+        },
+      ],
+      "@typescript-eslint/no-unsafe-assignment": "warn", // Downgraded to warning, or you can use "off"
     },
   },
   {

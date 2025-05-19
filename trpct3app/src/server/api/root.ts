@@ -3,6 +3,8 @@ import { favoriteRouter } from "~/server/api/routers/favorite";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 
 
+
+
 /**
  * This is the primary router for your server.
  *
@@ -10,7 +12,9 @@ import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
 suggestion: suggestionRouter,
-favorite:favoriteRouter
+favorite:favoriteRouter,
+
+
 });
 
 // export type definition of API
