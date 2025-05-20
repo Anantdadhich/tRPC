@@ -57,9 +57,7 @@ export function AISuggestions() {
     setTimeout(() => setSavedToast(false), 3000)
   }
 
-  // --- Render Logic based on Mutation State ---
 
-  // 1. Initial state (before the button is clicked)
   if (!hasTriggered) {
     return (
       <Card className="bg-black/60 border border-emerald-500/20 text-white overflow-hidden backdrop-blur-sm relative group transition-all duration-300 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/10">
@@ -84,8 +82,7 @@ export function AISuggestions() {
         </CardHeader>
         <CardContent>
           <p className="text-gray-300 mb-6">
-            Our AI will analyze your GitHub repositories, languages, and coding patterns to suggest projects that will
-            help you grow as a developer and build an impressive portfolio.
+          Our AI analyzes your GitHub repositories, tech stack, and starred projects to suggest project ideas that will help you grow as a developer and build an impressive portfolio — especially when you're feeling stuck or unsure about what to build next.
           </p>
           <Button
             onClick={handleGenerateClick}

@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useState, useRef, } from "react";
 
 export default function DashboardClient() {
-  const { data: suggestions, isLoading } = api.suggestion.getAllSuggestions.useQuery();
+  const { data: suggestions, isLoading } = api.suggestion.getByUser.useQuery();
   const [searchTerm, setSearchTerm] = useState("");
   const suggestionsRef = useRef(null);
   

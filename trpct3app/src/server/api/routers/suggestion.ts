@@ -319,5 +319,19 @@ export const suggestionRouter = createTRPCRouter({
                     }
                 });
             }
-        )
+        ),
+
+        //get by user 
+        getByUser: protectedProcedure.query(async ({ ctx }) => {
+            const userId = ctx.session.user.id;
+        
+            return ctx.db.suggestion.findMany({
+              where: {
+                createdById: userId,
+              },
+              orderBy: {
+                createdAt: "desc",
+              },
+            });
+          }),
 });
